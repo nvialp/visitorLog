@@ -11,12 +11,10 @@ import java.util.*;
 public class DataCenter {
     //declare private instance variables
     private ArrayList<Visitor> visitors;
-    private ArrayList<Vendor> vendors;
     
     //declare constructors
     public DataCenter(){
         this.visitors = new ArrayList<Visitor>();
-        this.vendors = new ArrayList<Vendor>();
     }
     
     //declare instance methods
@@ -24,15 +22,29 @@ public class DataCenter {
         visitors.add(visitor);
     }
     
-    public void addVendor(Vendor vendor){
-        vendors.add(vendor);
+    public int getVisitorIndex(Visitor referenceVisitor){
+        int index=-1;
+        for(Visitor v: visitors){
+            if(v.equals(referenceVisitor)){
+                index = visitors.indexOf(v);
+                break;
+            }
+            else{
+                System.out.print("visitor record not found!");
+            }
+        }
+        return index;
+    }
+    
+    public Visitor getVisitor(int index){
+        return visitors.get(index);
     }
     
     public ArrayList<Visitor> getVisitors(){
         return visitors;
     }
     
-    public String getSignedIn() {
+    public String getVisitorRecords() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("\n");
         for (int i = 0; i < visitors.size(); i++) {
@@ -41,22 +53,13 @@ public class DataCenter {
                     .append(visitors.get(i).getFirstName())
                     .append("\nCompany: ")
                     .append(visitors.get(i).getCompany())
+                    .append(",\nVendor: ")
+                    .append(visitors.get(i).getVendorStatus())
                     .append(",\nSigned In: ")
                     .append(visitors.get(i).getTimeIn())
-                    .append("\n\n");
-        }
-        stringBuilder.append("\n");
-        
-        for (int i = 0; i < vendors.size(); i++) {
-            stringBuilder.append(vendors.get(i).getLastName())
-                    .append(", ")
-                    .append(vendors.get(i).getFirstName())
-                    .append("\nCompany: ")
-                    .append(vendors.get(i).getCompany())
                     .append(",\nSigned In: ")
-                    .append(vendors.get(i).getTimeIn())
+                    .append(visitors.get(i).getTimeOut())
                     .append("\n\n");
-
         }
         stringBuilder.append("\n");
         return stringBuilder.toString();

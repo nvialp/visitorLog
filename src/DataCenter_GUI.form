@@ -55,11 +55,12 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnSignIn" linkSize="1" min="-2" max="-2" attributes="0"/>
                   <Component id="btnClear" linkSize="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnVisitorRecords" linkSize="1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="65" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jScrollPane2" min="-2" pref="197" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="281" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnSignOut" linkSize="1" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -101,7 +102,10 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnClear" linkSize="2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblSignInSuccess" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblSignInSuccess" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="btnVisitorRecords" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Component id="lblSignOutSuccess" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
@@ -238,5 +242,13 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="btnVisitorRecords">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Visitor Records"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisitorRecordsActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>

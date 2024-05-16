@@ -52,6 +52,7 @@ public class DataCenter_GUI extends javax.swing.JFrame {
         btnClear = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         listSignedIn = new javax.swing.JList<>();
+        btnVisitorRecords = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,6 +131,13 @@ public class DataCenter_GUI extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(listSignedIn);
 
+        btnVisitorRecords.setText("Visitor Records");
+        btnVisitorRecords.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisitorRecordsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -159,11 +167,12 @@ public class DataCenter_GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSignIn)
-                    .addComponent(btnClear))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                    .addComponent(btnClear)
+                    .addComponent(btnVisitorRecords))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSignOut))
                     .addComponent(lblCurrentlySignedIn))
@@ -174,7 +183,7 @@ public class DataCenter_GUI extends javax.swing.JFrame {
                 .addGap(277, 277, 277))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnClear, btnSignIn, btnSignOut});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnClear, btnSignIn, btnSignOut, btnVisitorRecords});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,7 +208,9 @@ public class DataCenter_GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnClear)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblSignInSuccess, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblSignInSuccess, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnVisitorRecords))
                         .addGap(41, 41, 41)
                         .addComponent(lblSignOutSuccess, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -283,7 +294,12 @@ public class DataCenter_GUI extends javax.swing.JFrame {
     private void btnSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignOutActionPerformed
         int listSignedInIndex = listSignedIn.getSelectedIndex();
         if(listSignedInIndex >= 0){
-            signedIn.get(listSignedInIndex).setTimeOut();
+            //update record with sign out time
+            //fix me: DigitalFortress.getVisitor(listSignedInIndex).setTimeOut();//getting visitor wont work by index as the gui array will have different index then data center array
+            Visitor tempVisitor = signedIn.get(listSignedInIndex);
+            DigitalFortress.getVisitor(DigitalFortress.getVisitorIndex(tempVisitor)).setTimeOut();
+            //remove visitor from the gui
+            //signedIn.get(listSignedInIndex).setTimeOut();
             signedIn.remove(listSignedInIndex);
             txtfldFirstName.setText("");
             txtfldLastName.setText("");
@@ -324,6 +340,10 @@ public class DataCenter_GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_listSignedInValueChanged
 
+    private void btnVisitorRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisitorRecordsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVisitorRecordsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -363,6 +383,7 @@ public class DataCenter_GUI extends javax.swing.JFrame {
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnSignIn;
     private javax.swing.JButton btnSignOut;
+    private javax.swing.JButton btnVisitorRecords;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCompany;
     private javax.swing.JLabel lblCurrentlySignedIn;
