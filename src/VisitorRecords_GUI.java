@@ -30,6 +30,7 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
         lblVisitorRecords = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtareaVisitorRecords = new javax.swing.JTextArea();
+        btnCloseWindow = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,6 +40,13 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
         txtareaVisitorRecords.setRows(5);
         jScrollPane1.setViewportView(txtareaVisitorRecords);
 
+        btnCloseWindow.setText("Close Window");
+        btnCloseWindow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseWindowActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -46,24 +54,31 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblVisitorRecords)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 302, Short.MAX_VALUE)
+                        .addComponent(btnCloseWindow)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(lblVisitorRecords)
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblVisitorRecords)
+                    .addComponent(btnCloseWindow))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCloseWindowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseWindowActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCloseWindowActionPerformed
 
     /**
      * @param args the command line arguments
@@ -101,6 +116,7 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCloseWindow;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblVisitorRecords;
     private javax.swing.JTextArea txtareaVisitorRecords;
