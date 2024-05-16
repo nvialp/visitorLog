@@ -341,7 +341,7 @@ public class DataCenter_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_listSignedInValueChanged
 
     private void btnVisitorRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisitorRecordsActionPerformed
-        // TODO add your handling code here:
+        new VisitorRecords_GUI(DigitalFortress).setVisible(true);
     }//GEN-LAST:event_btnVisitorRecordsActionPerformed
 
     /**
