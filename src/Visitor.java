@@ -4,7 +4,8 @@
  */
 
 import java.sql.Timestamp; 
-import java.util.Date; 
+import java.util.Date;
+import java.util.Formatter;
 public class Visitor {
     //declare private instance variables
     private String firstName;
@@ -13,7 +14,9 @@ public class Visitor {
     private String company;
     private Date currentDate = new Date();
     private Timestamp timeIn = new Timestamp(currentDate.getTime());
+    private String tIn = String.format("%1$TD %1$TT", timeIn);
     private Timestamp timeOut; //= new Timestamp(currentDate.getTime());
+    private String tOut = String.format("%1$TD %1$TT", timeIn);
     
     
     //declare constructors
@@ -28,7 +31,7 @@ public class Visitor {
         this.firstName = fName;
         this.lastName = lName;
         this.company = company;
-        this.timeIn = getTimeIn();
+        this.tIn = getTimeIn();
     }
     
     public Visitor(String fName, String lName, String company, Boolean vendor) {
@@ -36,7 +39,7 @@ public class Visitor {
         this.lastName = lName;
         this.vendor = vendor;
         this.company = company;
-        this.timeIn = getTimeIn();
+        this.tIn = getTimeIn();
     }
     
     //declare instance methods
@@ -72,12 +75,12 @@ public class Visitor {
         return company;
     }
     
-    public Timestamp getTimeIn(){
-        return timeIn;
+    public String getTimeIn(){
+        return tIn;
     }
     
-    public Timestamp getTimeOut(){
-        return timeOut;
+    public String getTimeOut(){
+        return tOut;
     }
     
     public void setTimeOut(){
@@ -87,13 +90,13 @@ public class Visitor {
     public String getVisitorInfo(){
         String info = "";
         
-        info += lastName + ", " + firstName + " - " + company + " (Vendor: " + vendor + ")" + " Signed In: " + timeIn + " Signed Out: " + timeOut;
+        info += lastName + ", " + firstName + " - " + company + " (Vendor: " + vendor + ")" + " Signed In: " + tIn + " Signed Out: " + timeOut;
         return info;
     }
     
     public String getVendorInfo(){
         String info = ""; 
-        info += lastName + ", " + firstName + " - " + company + " (Vendor: " + vendor + ")" + " Signed In: " + timeIn + " Signed Out: " + timeOut;
+        info += lastName + ", " + firstName + " - " + company + " (Vendor: " + vendor + ")" + " Signed In: " + tIn + " Signed Out: " + timeOut;
         return info;
     }
 }
