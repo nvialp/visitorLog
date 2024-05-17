@@ -299,7 +299,6 @@ public class DataCenter_GUI extends javax.swing.JFrame {
             Visitor tempVisitor = signedIn.get(listSignedInIndex);
             DigitalFortress.getVisitor(DigitalFortress.getVisitorIndex(tempVisitor)).setTimeOut();
             //remove visitor from the gui
-            //signedIn.get(listSignedInIndex).setTimeOut();
             signedIn.remove(listSignedInIndex);
             txtfldFirstName.setText("");
             txtfldLastName.setText("");

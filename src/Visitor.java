@@ -80,7 +80,8 @@ public class Visitor {
     }
     
     public void setTimeOut(){
-        this.timeOut = c.getTime();
+        Calendar cOut = Calendar.getInstance();
+        this.timeOut = cOut.getTime();
     }
     
     public String getVisitorInfo(){
