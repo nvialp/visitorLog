@@ -57,7 +57,7 @@ public class DataCenter {
                     .append(visitors.get(i).getVendorStatus())
                     .append(",\nSigned In: ")
                     .append(visitors.get(i).getTimeIn())
-                    .append(",\nSigned In: ")
+                    .append(",\nSigned out: ")
                     .append(visitors.get(i).getTimeOut())
                     .append("\n\n");
         }

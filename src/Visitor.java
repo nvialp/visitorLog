@@ -3,35 +3,31 @@
  * @author Nicholas Vialpando
  */
 
-import java.sql.Timestamp; 
-import java.util.Date;
-import java.util.Formatter;
+//import java.sql.Timestamp; 
+//import java.util.Date;
+//import java.util.Formatter;
+import java.util.*;
 public class Visitor {
     //declare private instance variables
     private String firstName;
     private String lastName;
     private Boolean vendor = false;
     private String company;
-    private Date currentDate = new Date();
-    private Timestamp timeIn = new Timestamp(currentDate.getTime());
+    private Calendar c = Calendar.getInstance();
+    private Date timeIn;
+    private Date timeOut;
+    /*private Timestamp timeIn = new Timestamp(currentDate.getTime());
     private String tIn = String.format("%1$TD %1$TT", timeIn);
     private Timestamp timeOut; //= new Timestamp(currentDate.getTime());
-    private String tOut = String.format("%1$TD %1$TT", timeIn);
+    private String tOut;// = String.format("%1$TD %1$TT", timeIn);*/
     
     
-    //declare constructors
-    public Visitor(String fName, String lName, String company, Timestamp time) {
-        this.firstName = fName;
-        this.lastName = lName;
-        this.company = company;
-        this.timeIn = time;
-    }
-    
+    //declare constructors    
     public Visitor(String fName, String lName, String company) {
         this.firstName = fName;
         this.lastName = lName;
         this.company = company;
-        this.tIn = getTimeIn();
+        this.timeIn = c.getTime();
     }
     
     public Visitor(String fName, String lName, String company, Boolean vendor) {
@@ -39,7 +35,7 @@ public class Visitor {
         this.lastName = lName;
         this.vendor = vendor;
         this.company = company;
-        this.tIn = getTimeIn();
+        this.timeIn = c.getTime();
     }
     
     //declare instance methods
@@ -75,28 +71,28 @@ public class Visitor {
         return company;
     }
     
-    public String getTimeIn(){
-        return tIn;
+    public Date getTimeIn(){
+        return timeIn;
     }
     
-    public String getTimeOut(){
-        return tOut;
+    public Date getTimeOut(){
+        return timeOut;
     }
     
     public void setTimeOut(){
-        timeOut = new Timestamp(currentDate.getTime());
+        this.timeOut = c.getTime();
     }
     
     public String getVisitorInfo(){
         String info = "";
         
-        info += lastName + ", " + firstName + " - " + company + " (Vendor: " + vendor + ")" + " Signed In: " + tIn + " Signed Out: " + timeOut;
+        info += lastName + ", " + firstName + " - " + company + " (Vendor: " + vendor + ")" + " Signed In: " + timeIn + " Signed Out: " + timeOut;
         return info;
     }
     
     public String getVendorInfo(){
         String info = ""; 
-        info += lastName + ", " + firstName + " - " + company + " (Vendor: " + vendor + ")" + " Signed In: " + tIn + " Signed Out: " + timeOut;
+        info += lastName + ", " + firstName + " - " + company + " (Vendor: " + vendor + ")" + " Signed In: " + timeIn + " Signed Out: " + timeOut;
         return info;
     }
 }
