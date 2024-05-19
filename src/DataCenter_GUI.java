@@ -249,8 +249,11 @@ public class DataCenter_GUI extends javax.swing.JFrame {
                 txtfldFirstName.setText("");
                 txtfldLastName.setText("");
                 txtfldCompany.setText("");
-                //Timer timer = new Timer(100, lblSignInSuccess.setVisible(true));
                 lblSignInSuccess.setVisible(true);
+                Timer timer = new Timer(2000, e -> lblSignInSuccess.setVisible(false));
+                timer.setRepeats(false);
+                timer.start();
+                //lblSignInSuccess.setVisible(true);
                 
                 
                 //jlist operations to display currently signed in vendors
@@ -275,6 +278,9 @@ public class DataCenter_GUI extends javax.swing.JFrame {
                 txtfldLastName.setText("");
                 txtfldCompany.setText("");
                 lblSignInSuccess.setVisible(true);
+                Timer timer = new Timer(2000, e -> lblSignInSuccess.setVisible(false));
+                timer.setRepeats(false);
+                timer.start();
                 
                 listSignedInModel.removeAllElements();
                 for(Visitor v: signedIn){
@@ -303,7 +309,10 @@ public class DataCenter_GUI extends javax.swing.JFrame {
             txtfldFirstName.setText("");
             txtfldLastName.setText("");
             txtfldCompany.setText("");
-            lblSignInSuccess.setVisible(true);
+            lblSignOutSuccess.setVisible(true);
+            Timer timer = new Timer(2000, e -> lblSignOutSuccess.setVisible(false));
+            timer.setRepeats(false);
+            timer.start();
         }
         
         listSignedInModel.removeAllElements();
