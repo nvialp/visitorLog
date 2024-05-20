@@ -91,6 +91,13 @@ public class Visitor {
         return info;
     }
     
+    public String getVisitorData(){
+        String info = "";
+        
+        info += lastName + "," + firstName + "," + company + "," + vendor + "," + "," + timeIn + "," + timeOut;
+        return info;
+    }
+    
     public String getVendorInfo(){
         String info = ""; 
         info += lastName + ", " + firstName + " - " + company + " (Vendor: " + vendor + ")" + " Signed In: " + timeIn + " Signed Out: " + timeOut;

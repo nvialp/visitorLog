@@ -9,6 +9,13 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import java.awt.event.*;
 import javax.swing.*;
+//imports for saving persistent data
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class DataCenter_GUI extends javax.swing.JFrame {
 
     /**
@@ -17,6 +24,9 @@ public class DataCenter_GUI extends javax.swing.JFrame {
     DataCenter DigitalFortress;
     private ArrayList<Visitor> signedIn = new ArrayList<Visitor>();
     private DefaultListModel listSignedInModel = new DefaultListModel();
+    static String fileLocation = "visitors.dat";
+    
+    //constructor
     public DataCenter_GUI() {
         DigitalFortress = new DataCenter();
         initComponents();
@@ -253,8 +263,19 @@ public class DataCenter_GUI extends javax.swing.JFrame {
                 Timer timer = new Timer(2000, e -> lblSignInSuccess.setVisible(false));
                 timer.setRepeats(false);
                 timer.start();
-                //lblSignInSuccess.setVisible(true);
                 
+                //save operation
+                try{
+                    String s = DigitalFortress.getVisitor(DigitalFortress.getVisitorIndex(newVendor)).getVisitorData();
+                    System.out.print(s);
+                    FileWriter w = new FileWriter(fileLocation);
+                    BufferedWriter writer = new BufferedWriter(w);
+                    writer.write(s);
+                    writer.close();
+                }
+                catch (IOException e){
+                    JOptionPane.showMessageDialog(rootPane, "File Error");
+                }
                 
                 //jlist operations to display currently signed in vendors
                 listSignedInModel.removeAllElements();
@@ -363,7 +384,7 @@ public class DataCenter_GUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
