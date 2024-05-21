@@ -94,7 +94,7 @@ public class Visitor {
     public String getVisitorData(){
         String info = "";
         
-        info += lastName + "," + firstName + "," + company + "," + vendor + "," + "," + timeIn + "," + timeOut;
+        info += lastName + "," + firstName + "," + company + "," + vendor + "," + timeIn + "," + timeOut;
         return info;
     }
     

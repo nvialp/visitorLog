@@ -24,7 +24,7 @@ public class DataCenter_GUI extends javax.swing.JFrame {
     DataCenter DigitalFortress;
     private ArrayList<Visitor> signedIn = new ArrayList<Visitor>();
     private DefaultListModel listSignedInModel = new DefaultListModel();
-    static String fileLocation = "visitors.dat";
+    static String fileLocation = "visitors_dat.txt";
     
     //constructor
     public DataCenter_GUI() {
@@ -264,18 +264,21 @@ public class DataCenter_GUI extends javax.swing.JFrame {
                 timer.setRepeats(false);
                 timer.start();
                 
-                //save operation
-                try{
+                //String s = DigitalFortress.getVisitor(DigitalFortress.getVisitorIndex(newVendor)).getVisitorData();
+                    //System.out.print(s);
+                
+                //save operation - doesnt work here since time out is null
+                /*try{
                     String s = DigitalFortress.getVisitor(DigitalFortress.getVisitorIndex(newVendor)).getVisitorData();
                     System.out.print(s);
                     FileWriter w = new FileWriter(fileLocation);
                     BufferedWriter writer = new BufferedWriter(w);
-                    writer.write(s);
+                    writer.write("s");
                     writer.close();
                 }
                 catch (IOException e){
-                    JOptionPane.showMessageDialog(rootPane, "File Error");
-                }
+                    JOptionPane.showMessageDialog(DataCenter_GUI.this, "File Error");
+                }*/
                 
                 //jlist operations to display currently signed in vendors
                 listSignedInModel.removeAllElements();
@@ -325,6 +328,22 @@ public class DataCenter_GUI extends javax.swing.JFrame {
             //fix me: DigitalFortress.getVisitor(listSignedInIndex).setTimeOut();//getting visitor wont work by index as the gui array will have different index then data center array
             Visitor tempVisitor = signedIn.get(listSignedInIndex);
             DigitalFortress.getVisitor(DigitalFortress.getVisitorIndex(tempVisitor)).setTimeOut();
+            
+            //save operation
+            try{
+                    String s = DigitalFortress.getVisitor(DigitalFortress.getVisitorIndex(tempVisitor)).getVisitorData();
+                    System.out.print(s);
+                    FileWriter w = new FileWriter(fileLocation,true);
+                    BufferedWriter writer = new BufferedWriter(w);
+                    writer.write(s);
+                    writer.newLine();
+                    writer.close();
+                    JOptionPane.showMessageDialog(DataCenter_GUI.this, "Record saved");
+                }
+                catch (IOException e){
+                    JOptionPane.showMessageDialog(DataCenter_GUI.this, "File Error");
+                }
+            
             //remove visitor from the gui
             signedIn.remove(listSignedInIndex);
             txtfldFirstName.setText("");
