@@ -268,13 +268,7 @@ public class DataCenter_GUI extends javax.swing.JFrame {
                 //jlist operations to display currently signed in vendors
                 listSignedInModel.removeAllElements();
                 for(Visitor v: signedIn){
-                    Boolean vendor = v.getVendorStatus();
-                    if(vendor == true){
-                        listSignedInModel.addElement(v.getVendorInfo()); 
-                    }                  
-                    else{
-                        listSignedInModel.addElement(v.getVisitorInfo());
-                    }
+                    listSignedInModel.addElement(v.getVisitorInfo());
                 }
                 rbtnVendor.setSelected(false);
             }
@@ -290,13 +284,7 @@ public class DataCenter_GUI extends javax.swing.JFrame {
                 
                 listSignedInModel.removeAllElements();
                 for(Visitor v: signedIn){
-                    Boolean vendor = v.getVendorStatus();
-                    if(vendor == false){
-                       listSignedInModel.addElement(v.getVendorInfo()); 
-                    }                  
-                    else{
-                        listSignedInModel.addElement(v.getVisitorInfo());
-                    }
+                    listSignedInModel.addElement(v.getVisitorInfo());
                 }
                 rbtnVendor.setSelected(false);
             }
@@ -338,12 +326,7 @@ public class DataCenter_GUI extends javax.swing.JFrame {
         
         listSignedInModel.removeAllElements();
         for (Visitor v : signedIn) {
-            Boolean vendor = v.getVendorStatus();
-            if (vendor == false) {
-                listSignedInModel.addElement(v.getVendorInfo());
-            } else {
-                listSignedInModel.addElement(v.getVisitorInfo());
-            }
+            listSignedInModel.addElement(v.getVisitorInfo());
         }
         rbtnVendor.setSelected(false);
     }//GEN-LAST:event_btnSignOutActionPerformed
