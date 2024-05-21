@@ -264,29 +264,12 @@ public class DataCenter_GUI extends javax.swing.JFrame {
                 timer.setRepeats(false);
                 timer.start();
                 
-                //String s = DigitalFortress.getVisitor(DigitalFortress.getVisitorIndex(newVendor)).getVisitorData();
-                    //System.out.print(s);
-                
-                //save operation - doesnt work here since time out is null
-                /*try{
-                    String s = DigitalFortress.getVisitor(DigitalFortress.getVisitorIndex(newVendor)).getVisitorData();
-                    System.out.print(s);
-                    FileWriter w = new FileWriter(fileLocation);
-                    BufferedWriter writer = new BufferedWriter(w);
-                    writer.write("s");
-                    writer.close();
-                }
-                catch (IOException e){
-                    JOptionPane.showMessageDialog(DataCenter_GUI.this, "File Error");
-                }*/
-                
                 //jlist operations to display currently signed in vendors
                 listSignedInModel.removeAllElements();
                 for(Visitor v: signedIn){
                     Boolean vendor = v.getVendorStatus();
                     if(vendor == true){
-                        System.out.print(vendor);
-                       listSignedInModel.addElement(v.getVendorInfo()); 
+                        listSignedInModel.addElement(v.getVendorInfo()); 
                     }                  
                     else{
                         listSignedInModel.addElement(v.getVisitorInfo());
@@ -325,14 +308,12 @@ public class DataCenter_GUI extends javax.swing.JFrame {
         int listSignedInIndex = listSignedIn.getSelectedIndex();
         if(listSignedInIndex >= 0){
             //update record with sign out time
-            //fix me: DigitalFortress.getVisitor(listSignedInIndex).setTimeOut();//getting visitor wont work by index as the gui array will have different index then data center array
             Visitor tempVisitor = signedIn.get(listSignedInIndex);
             DigitalFortress.getVisitor(DigitalFortress.getVisitorIndex(tempVisitor)).setTimeOut();
             
             //save operation
             try{
                     String s = DigitalFortress.getVisitor(DigitalFortress.getVisitorIndex(tempVisitor)).getVisitorData();
-                    System.out.print(s);
                     FileWriter w = new FileWriter(fileLocation,true);
                     BufferedWriter writer = new BufferedWriter(w);
                     writer.write(s);
