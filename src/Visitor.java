@@ -87,7 +87,7 @@ public class Visitor {
     public String getVisitorInfo(){
         String info = "";
         
-        info += lastName + ", " + firstName + " - " + company + " (Vendor: " + vendor + ")" + " Signed In: " + timeIn + " Signed Out: " + timeOut;
+        info += lastName + ", " + firstName + " - " + company + " (Vendor: " + vendor + ")" + "\n" + "\nSigned In: " + timeIn + ", Signed Out: " + timeOut;
         return info;
     }
     
@@ -100,7 +100,7 @@ public class Visitor {
     
     public String getVendorInfo(){
         String info = ""; 
-        info += lastName + ", " + firstName + " - " + company + " (Vendor: " + vendor + ")" + " Signed In: " + timeIn + " Signed Out: " + timeOut;
+        info += lastName + ", " + firstName + " - " + company + " (Vendor: " + vendor + ")" + "\n" + "\nSigned In: " + timeIn + ", Signed Out: " + timeOut;
         return info;
     }
 }

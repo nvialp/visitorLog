@@ -254,7 +254,7 @@ public class DataCenter_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_txtfldCompanyActionPerformed
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
-        if(!txtfldFirstName.getText().equals("") || !txtfldLastName.getText().equals("") || !txtfldCompany.getText().equals("")) {
+        if(!txtfldFirstName.getText().equals("") && !txtfldLastName.getText().equals("") && !txtfldCompany.getText().equals("")) {
             if (rbtnVendor.isSelected()) {
                 Visitor newVendor = new Visitor(txtfldFirstName.getText().trim(), txtfldLastName.getText().trim(), txtfldCompany.getText().trim(), true);
                 DigitalFortress.addVisitor(newVendor);
@@ -300,6 +300,9 @@ public class DataCenter_GUI extends javax.swing.JFrame {
                 }
                 rbtnVendor.setSelected(false);
             }
+        }
+        else{
+            JOptionPane.showMessageDialog(DataCenter_GUI.this, "Visitor fields cannot be blank.");
         }
     }//GEN-LAST:event_btnSignInActionPerformed
 

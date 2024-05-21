@@ -29,9 +29,6 @@ public class DataCenter {
                 index = visitors.indexOf(v);
                 break;
             }
-            else{
-                System.out.print("visitor record not found!");
-            }
         }
         return index;
     }
