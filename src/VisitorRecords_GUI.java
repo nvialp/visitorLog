@@ -93,7 +93,7 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Last Name", "First Name", "Company", "Vendor", "Time In", "Time Out"
+                "LAST NAME", "FFIRST NAME", "COMPANY", "VENDOR", "TIME IN", "TIME OUT"
             }
         ) {
             Class[] types = new Class [] {
@@ -192,10 +192,11 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
                     .addComponent(txtCompany, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addComponent(lblVisitorRecords)
-                .addGap(6, 6, 6)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(btnCloseWindow))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCloseWindow)
+                .addGap(8, 8, 8))
         );
 
         pack();

@@ -29,12 +29,15 @@ public class DataCenter_GUI extends javax.swing.JFrame {
     //constructor
     public DataCenter_GUI() {
         DigitalFortress = new DataCenter();
-        initComponents();
-        
-        
+        initComponents();        
         lblSignInSuccess.setVisible(false);
-        lblSignOutSuccess.setVisible(false);
-        
+        lblSignOutSuccess.setVisible(false);        
+    }
+    
+    private void clearTextFields(){
+        txtfldFirstName.setText("");
+        txtfldLastName.setText("");
+        txtfldCompany.setText(""); 
     }
 
     /**
@@ -253,12 +256,10 @@ public class DataCenter_GUI extends javax.swing.JFrame {
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         if(!txtfldFirstName.getText().equals("") || !txtfldLastName.getText().equals("") || !txtfldCompany.getText().equals("")) {
             if (rbtnVendor.isSelected()) {
-                Visitor newVendor = new Visitor(txtfldFirstName.getText(), txtfldLastName.getText(), txtfldCompany.getText(), true);
+                Visitor newVendor = new Visitor(txtfldFirstName.getText().trim(), txtfldLastName.getText().trim(), txtfldCompany.getText().trim(), true);
                 DigitalFortress.addVisitor(newVendor);
                 signedIn.add(newVendor);
-                txtfldFirstName.setText("");
-                txtfldLastName.setText("");
-                txtfldCompany.setText("");
+                clearTextFields();
                 lblSignInSuccess.setVisible(true);
                 Timer timer = new Timer(2000, e -> lblSignInSuccess.setVisible(false));
                 timer.setRepeats(false);
@@ -278,12 +279,10 @@ public class DataCenter_GUI extends javax.swing.JFrame {
                 rbtnVendor.setSelected(false);
             }
             else{
-                Visitor newVisitor = new Visitor(txtfldFirstName.getText(), txtfldLastName.getText(), txtfldCompany.getText());
+                Visitor newVisitor = new Visitor(txtfldFirstName.getText().trim(), txtfldLastName.getText().trim(), txtfldCompany.getText().trim());
                 DigitalFortress.addVisitor(newVisitor);
                 signedIn.add(newVisitor);
-                txtfldFirstName.setText("");
-                txtfldLastName.setText("");
-                txtfldCompany.setText("");
+                clearTextFields();
                 lblSignInSuccess.setVisible(true);
                 Timer timer = new Timer(2000, e -> lblSignInSuccess.setVisible(false));
                 timer.setRepeats(false);
@@ -327,9 +326,7 @@ public class DataCenter_GUI extends javax.swing.JFrame {
             
             //remove visitor from the gui
             signedIn.remove(listSignedInIndex);
-            txtfldFirstName.setText("");
-            txtfldLastName.setText("");
-            txtfldCompany.setText("");
+            clearTextFields();
             lblSignOutSuccess.setVisible(true);
             Timer timer = new Timer(2000, e -> lblSignOutSuccess.setVisible(false));
             timer.setRepeats(false);
@@ -353,10 +350,9 @@ public class DataCenter_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtnVendorActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        txtfldFirstName.setText("");
-        txtfldLastName.setText("");
-        txtfldCompany.setText("");
+        clearTextFields();
         lblSignInSuccess.setVisible(false);
+        lblSignOutSuccess.setVisible(false);
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void listSignedInValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listSignedInValueChanged
