@@ -93,7 +93,7 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "LAST NAME", "FFIRST NAME", "COMPANY", "VENDOR", "TIME IN", "TIME OUT"
+                "LAST NAME", "FIRST NAME", "COMPANY", "VENDOR", "TIME IN", "TIME OUT"
             }
         ) {
             Class[] types = new Class [] {

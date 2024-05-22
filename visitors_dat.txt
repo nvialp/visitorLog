@@ -10,3 +10,5 @@ Carter,Elmer,Carter Industries,true,Tue May 21 15:56:39 PDT 2024,Tue May 21 15:5
 vialpando,nick,df,false,Tue May 21 16:12:47 PDT 2024,Tue May 21 16:13:02 PDT 2024
 nye,bill,science,true,Tue May 21 16:17:08 PDT 2024,Tue May 21 16:18:05 PDT 2024
 tyson,niel,science,false,Tue May 21 16:17:30 PDT 2024,Tue May 21 16:18:08 PDT 2024
+brown,Ariel,atlantis printing,Yes,Tue May 21 20:29:24 PDT 2024,Tue May 21 20:30:06 PDT 2024
+Murphy,Alex,ocp dpd,No,Tue May 21 20:29:55 PDT 2024,Tue May 21 20:30:17 PDT 2024

@@ -11,7 +11,8 @@ public class Visitor {
     //declare private instance variables
     private String firstName;
     private String lastName;
-    private Boolean vendor = false;
+    private Boolean vendorCheck = false;
+    private String vendor="No";
     private String company;
     private Calendar c = Calendar.getInstance();
     private Date timeIn;
@@ -30,10 +31,13 @@ public class Visitor {
         this.timeIn = c.getTime();
     }
     
-    public Visitor(String fName, String lName, String company, Boolean vendor) {
+    public Visitor(String fName, String lName, String company, Boolean vendorCheck) {
         this.firstName = fName;
         this.lastName = lName;
-        this.vendor = vendor;
+        this.vendorCheck = vendorCheck;
+        if(vendorCheck){
+            vendor = "Yes";
+        }
         this.company = company;
         this.timeIn = c.getTime();
     }
@@ -60,11 +64,11 @@ public class Visitor {
     }
     
     public Boolean getVendorStatus(){
-        return vendor;
+        return vendorCheck;
     }
     
     public void setVendorStatus(){
-        this.vendor = true;
+        this.vendorCheck = true;
     }
     
     public String getCompany(){
@@ -87,7 +91,7 @@ public class Visitor {
     public String getVisitorInfo(){
         String info = "";
         
-        info += lastName + ", " + firstName + " - " + company + " (Vendor: " + vendor + ")--" + " Signed In: " + timeIn + ", Signed Out: " + timeOut;
+        info += lastName + ", " + firstName + " - " + company + " (Vendor: " + vendor + ")" + " Signed In: " + timeIn + ", Signed Out: " + timeOut;
         return info;
     }
     

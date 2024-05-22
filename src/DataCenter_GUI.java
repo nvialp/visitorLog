@@ -301,7 +301,7 @@ public class DataCenter_GUI extends javax.swing.JFrame {
             Visitor tempVisitor = signedIn.get(listSignedInIndex);
             DigitalFortress.getVisitor(DigitalFortress.getVisitorIndex(tempVisitor)).setTimeOut();
             
-            //save operation
+            //save operation to update txt file for persistent data
             try{
                     String s = DigitalFortress.getVisitor(DigitalFortress.getVisitorIndex(tempVisitor)).getVisitorData();
                     FileWriter w = new FileWriter(fileLocation,true);
