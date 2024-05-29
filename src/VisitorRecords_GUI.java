@@ -40,6 +40,7 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
             BufferedReader reader = new BufferedReader(r);
             
             //while loop to load each record
+            
             while((s=reader.readLine())!=null){
                 if(s.length()>0){
                     String visitorItem[] = s.split(",");
@@ -239,7 +240,7 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         for(int i=0; i <= tblVisitorRecords.getRowCount()-1; i++){
-            if (txtLastName.getText().equals(tblVisitorRecords.getValueAt(i, 0)) && txtFirstName.getText().equals(tblVisitorRecords.getValueAt(i, 1)) && txtCompany.getText().equals(tblVisitorRecords.getValueAt(i,2))){
+            if (txtLastName.getText().trim().equals(tblVisitorRecords.getValueAt(i, 0)) && txtFirstName.getText().trim().equals(tblVisitorRecords.getValueAt(i, 1)) && txtCompany.getText().trim().equals(tblVisitorRecords.getValueAt(i,2))){
                     System.out.print(tblVisitorRecords.getValueAt(i, 0) + ", " + tblVisitorRecords.getValueAt(i,1) + ", " + tblVisitorRecords.getValueAt(i,2));
                 }
             /*for(int j=0; j<= 3-1; j++){
