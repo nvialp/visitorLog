@@ -41,6 +41,10 @@ public class DataCenter {
         return visitors;
     }
     
+    public int getVisitorsSize(){
+        return visitors.size();
+    }
+    
     public String getVisitorRecords() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("\n");
@@ -56,6 +60,27 @@ public class DataCenter {
                     .append(visitors.get(i).getTimeIn())
                     .append(",\nSigned out: ")
                     .append(visitors.get(i).getTimeOut())
+                    .append("\n\n");
+        }
+        stringBuilder.append("\n");
+        return stringBuilder.toString();
+    }
+    
+    public String getVisitorRecordsForArray() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("\n");
+        for (int i = 0; i < visitors.size(); i++) {
+            stringBuilder.append(visitors.get(i).getLastName())
+                    .append(", ")
+                    .append(visitors.get(i).getFirstName())
+                    .append("\nCompany: ")
+                    .append(visitors.get(i).getCompany())
+                    .append(",\nVendor: ")
+                    .append(visitors.get(i).getVendorStatus())
+                    .append(",\nSigned In: ")
+                    .append(visitors.get(i).getDateIn())
+                    .append(",\nSigned out: ")
+                    .append(visitors.get(i).getDateOut())
                     .append("\n\n");
         }
         stringBuilder.append("\n");

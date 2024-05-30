@@ -17,6 +17,8 @@ public class Visitor {
     private Calendar c = Calendar.getInstance();
     private Date timeIn;
     private Date timeOut;
+    private String dateIn;
+    private String dateOut;
     /*private Timestamp timeIn = new Timestamp(currentDate.getTime());
     private String tIn = String.format("%1$TD %1$TT", timeIn);
     private Timestamp timeOut; //= new Timestamp(currentDate.getTime());
@@ -31,6 +33,15 @@ public class Visitor {
         this.timeIn = c.getTime();
     }
     
+    public Visitor(String fName, String lName, String company, String vendor, String dateIn, String dateOut) {
+        this.firstName = fName;
+        this.lastName = lName;
+        this.company = company;
+        this.vendor = vendor;
+        this.dateIn = dateIn;
+        this.dateOut = dateOut;
+    }
+    
     public Visitor(String fName, String lName, String company, Boolean vendorCheck) {
         this.firstName = fName;
         this.lastName = lName;
@@ -39,7 +50,8 @@ public class Visitor {
             vendor = "Yes";
         }
         this.company = company;
-        this.timeIn = c.getTime();
+        //this.timeIn = c.getTime();
+        dateIn = c.getTime().toString();
     }
     
     //declare instance methods
@@ -79,19 +91,28 @@ public class Visitor {
         return timeIn;
     }
     
+    public String getDateIn(){
+        return dateIn;
+    }
+    
     public Date getTimeOut(){
         return timeOut;
+    }
+    
+    public String getDateOut(){
+        return dateOut;
     }
     
     public void setTimeOut(){
         Calendar cOut = Calendar.getInstance();
         this.timeOut = cOut.getTime();
+        dateOut = timeOut.toString();
     }
     
     public String getVisitorInfo(){
         String info = "";
         
-        info += lastName + ", " + firstName + " - " + company + " (Vendor: " + vendor + ")" + " Signed In: " + timeIn + ", Signed Out: " + timeOut;
+        info += lastName + ", " + firstName + " - " + company + " (Vendor: " + vendor + ")" + " Signed In: " + dateIn + ", Signed Out: " + dateOut;
         return info;
     }
     

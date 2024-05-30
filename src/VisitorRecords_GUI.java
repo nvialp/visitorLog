@@ -39,9 +39,20 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
             FileReader r = new FileReader(fileLocation);
             BufferedReader reader = new BufferedReader(r);
             
-            //while loop to load each record
-            
+            //while loop to load arraylist with each record
             while((s=reader.readLine())!=null){
+                if(s.length()>0){
+                    String visitorItem[] = s.split(",");
+                    Visitor tempVisitor = new Visitor(visitorItem[1]/*last name is saved first*/, visitorItem[0], visitorItem[2], visitorItem[3], visitorItem[4], visitorItem[5]);
+                    DigitalFortress.addVisitor(tempVisitor);
+                    //DefaultTableModel model = (DefaultTableModel) tblVisitorRecords.getModel();
+                    
+                } 
+            }
+            reader.close();
+            System.out.print(DigitalFortress.getVisitorRecordsForArray());
+            //while loop to load each record
+            /*while((s=reader.readLine())!=null){
                 if(s.length()>0){
                     String visitorItem[] = s.split(",");
                     DefaultTableModel model = (DefaultTableModel) tblVisitorRecords.getModel();
@@ -55,7 +66,7 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
                     model.addRow(row);
                 }
             }
-            reader.close();
+            reader.close();*/
         }
         catch(IOException e){
             JOptionPane.showMessageDialog(VisitorRecords_GUI.this, "File Error");
@@ -239,9 +250,10 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCloseWindowActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        for(int i=0; i <= tblVisitorRecords.getRowCount()-1; i++){
-            if (txtLastName.getText().trim().equals(tblVisitorRecords.getValueAt(i, 0)) && txtFirstName.getText().trim().equals(tblVisitorRecords.getValueAt(i, 1)) && txtCompany.getText().trim().equals(tblVisitorRecords.getValueAt(i,2))){
-                    System.out.print(tblVisitorRecords.getValueAt(i, 0) + ", " + tblVisitorRecords.getValueAt(i,1) + ", " + tblVisitorRecords.getValueAt(i,2));
+        //search datacenter visitor array for matching txt field entry
+        for(int i=0; i <= DigitalFortress.getVisitorsSize()-1; i++){
+            if (txtLastName.getText().trim().equals(DigitalFortress.getVisitor(i).getLastName()) && txtFirstName.getText().trim().equals(DigitalFortress.getVisitor(i).getFirstName()) && txtCompany.getText().trim().equals(DigitalFortress.getVisitor(i).getCompany())){
+                    System.out.print(DigitalFortress.getVisitor(i).getVisitorInfo());
                 }
             /*for(int j=0; j<= 3-1; j++){
                 System.out.println(tblVisitorRecords.getValueAt(i,j));
@@ -252,6 +264,14 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
             System.out.print("\n");
         }
         clearTextFields();
+        
+        /*for(int i=0; i <= tblVisitorRecords.getRowCount()-1; i++){
+            if (txtLastName.getText().trim().equals(tblVisitorRecords.getValueAt(i, 0)) && txtFirstName.getText().trim().equals(tblVisitorRecords.getValueAt(i, 1)) && txtCompany.getText().trim().equals(tblVisitorRecords.getValueAt(i,2))){
+                    System.out.print(tblVisitorRecords.getValueAt(i, 0) + ", " + tblVisitorRecords.getValueAt(i,1) + ", " + tblVisitorRecords.getValueAt(i,2));
+                }
+            System.out.print("\n");
+        }
+        clearTextFields();*/
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void txtLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLastNameActionPerformed
