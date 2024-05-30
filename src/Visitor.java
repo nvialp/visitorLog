@@ -83,6 +83,10 @@ public class Visitor {
         this.vendorCheck = true;
     }
     
+    public String getVendor(){
+        return vendor;
+    }
+    
     public String getCompany(){
         return company;
     }

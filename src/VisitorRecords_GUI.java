@@ -29,6 +29,9 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
     public VisitorRecords_GUI(DataCenter dataCenter){
         this();
         DigitalFortress = dataCenter;
+        lblVisitorRecords.setVisible(false);
+        jScrollPane2.setVisible(false);
+        tblVisitorRecords.setVisible(false);
         
         loadData();
     }
@@ -250,10 +253,23 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCloseWindowActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        //clear table before populating with new search
+        DefaultTableModel model = (DefaultTableModel) tblVisitorRecords.getModel();
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+
         //search datacenter visitor array for matching txt field entry
         for(int i=0; i <= DigitalFortress.getVisitorsSize()-1; i++){
             if (txtLastName.getText().trim().equals(DigitalFortress.getVisitor(i).getLastName()) && txtFirstName.getText().trim().equals(DigitalFortress.getVisitor(i).getFirstName()) && txtCompany.getText().trim().equals(DigitalFortress.getVisitor(i).getCompany())){
-                    System.out.print(DigitalFortress.getVisitor(i).getVisitorInfo());
+                    //make table visible
+                    lblVisitorRecords.setVisible(true);
+                    jScrollPane2.setVisible(true);
+                    tblVisitorRecords.setVisible(true);
+
+                    // testing match:  System.out.print(DigitalFortress.getVisitor(i).getVisitorInfo());
+                    //load table with matching visitor record
+                    //DefaultTableModel model = (DefaultTableModel) tblVisitorRecords.getModel();
+                    model.addRow(new Object[]{DigitalFortress.getVisitor(i).getLastName(), DigitalFortress.getVisitor(i).getFirstName(), DigitalFortress.getVisitor(i).getCompany(), DigitalFortress.getVisitor(i).getVendor(), DigitalFortress.getVisitor(i).getDateIn(), DigitalFortress.getVisitor(i).getDateOut()});
                 }
             /*for(int j=0; j<= 3-1; j++){
                 System.out.println(tblVisitorRecords.getValueAt(i,j));
