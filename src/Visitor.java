@@ -31,6 +31,7 @@ public class Visitor {
         this.lastName = lName;
         this.company = company;
         this.timeIn = c.getTime();
+        this.dateIn = timeIn.toString();
     }
     
     public Visitor(String fName, String lName, String company, String vendor, String dateIn, String dateOut) {
@@ -50,8 +51,8 @@ public class Visitor {
             vendor = "Yes";
         }
         this.company = company;
-        //this.timeIn = c.getTime();
-        dateIn = c.getTime().toString();
+        this.timeIn = c.getTime();
+        this.dateIn = timeIn.toString();
     }
     
     //declare instance methods

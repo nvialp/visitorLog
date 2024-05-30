@@ -1,3 +1,4 @@
+
 /**
  *
  * @author Nicholas Vialpando
@@ -8,49 +9,49 @@ import java.io.IOException;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 public class VisitorRecords_GUI extends javax.swing.JFrame {
 
     /**
      * Creates new form VisitorRecords_GUI
      */
     private DataCenter DigitalFortress;
-    static String fileLocation="visitors_dat.txt";
-    private void clearTextFields(){
+    static String fileLocation = "visitors_dat.txt";
+    
+
+    private void clearTextFields() {
         txtFirstName.setText("");
         txtLastName.setText("");
-        txtCompany.setText(""); 
+        txtCompany.setText("");
     }
-    
+
     //constructors
     public VisitorRecords_GUI() {
         initComponents();
     }
-    
-    public VisitorRecords_GUI(DataCenter dataCenter){
+
+    public VisitorRecords_GUI(DataCenter dataCenter) {
         this();
         DigitalFortress = dataCenter;
         lblVisitorRecords.setVisible(false);
         jScrollPane2.setVisible(false);
         tblVisitorRecords.setVisible(false);
-        
         loadData();
     }
-    
-    private void loadData(){
+
+    private void loadData() {
         String s;
-        try{
+        try {
             FileReader r = new FileReader(fileLocation);
             BufferedReader reader = new BufferedReader(r);
-            
+
             //while loop to load arraylist with each record
-            while((s=reader.readLine())!=null){
-                if(s.length()>0){
+            while ((s = reader.readLine()) != null) {
+                if (s.length() > 0) {
                     String visitorItem[] = s.split(",");
                     Visitor tempVisitor = new Visitor(visitorItem[1]/*last name is saved first*/, visitorItem[0], visitorItem[2], visitorItem[3], visitorItem[4], visitorItem[5]);
                     DigitalFortress.addVisitor(tempVisitor);
-                    //DefaultTableModel model = (DefaultTableModel) tblVisitorRecords.getModel();
-                    
-                } 
+                }
             }
             reader.close();
             System.out.print(DigitalFortress.getVisitorRecordsForArray());
@@ -70,8 +71,7 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
                 }
             }
             reader.close();*/
-        }
-        catch(IOException e){
+        } catch (IOException e) {
             JOptionPane.showMessageDialog(VisitorRecords_GUI.this, "File Error");
         }
     }
@@ -100,6 +100,8 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        lblViewAllVisitors = new javax.swing.JLabel();
+        btnViewAllVisitors = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -166,6 +168,16 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
 
         jLabel4.setText("End Date");
 
+        lblViewAllVisitors.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblViewAllVisitors.setText("VIEW ALL VISITORS");
+
+        btnViewAllVisitors.setText("View All Visitors");
+        btnViewAllVisitors.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewAllVisitorsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -175,14 +187,18 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(txtCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblVisitorRecords)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblViewAllVisitors)
+                                    .addComponent(btnViewAllVisitors))
+                                .addGap(160, 160, 160)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(txtCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(12, 12, 12)
@@ -194,7 +210,7 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
                                         .addGap(12, 12, 12)
                                         .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(215, 215, 215)
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,7 +218,7 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(313, 313, 313)
                         .addComponent(btnCloseWindow)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel4});
@@ -213,12 +229,15 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(lblViewAllVisitors))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
-                        .addComponent(lblFirstName))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblFirstName)
+                            .addComponent(btnViewAllVisitors)))
                     .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnSearch)
@@ -239,7 +258,7 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(lblVisitorRecords)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCloseWindow)
                 .addGap(8, 8, 8))
@@ -247,8 +266,17 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void btnCloseWindowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseWindowActionPerformed
+        //clear table before closing
+        DefaultTableModel model = (DefaultTableModel) tblVisitorRecords.getModel();
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+        
+        lblVisitorRecords.setVisible(false);
+        jScrollPane2.setVisible(false);
+        tblVisitorRecords.setVisible(false);
+        
         this.setVisible(false);
     }//GEN-LAST:event_btnCloseWindowActionPerformed
 
@@ -259,40 +287,41 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
         model.fireTableDataChanged();
 
         //search datacenter visitor array for matching txt field entry
-        for(int i=0; i <= DigitalFortress.getVisitorsSize()-1; i++){
-            if (txtLastName.getText().trim().equals(DigitalFortress.getVisitor(i).getLastName()) && txtFirstName.getText().trim().equals(DigitalFortress.getVisitor(i).getFirstName()) && txtCompany.getText().trim().equals(DigitalFortress.getVisitor(i).getCompany())){
-                    //make table visible
-                    lblVisitorRecords.setVisible(true);
-                    jScrollPane2.setVisible(true);
-                    tblVisitorRecords.setVisible(true);
+        for (int i = 0; i <= DigitalFortress.getVisitorsSize() - 1; i++) {
+            if (txtLastName.getText().trim().equals(DigitalFortress.getVisitor(i).getLastName()) && txtFirstName.getText().trim().equals(DigitalFortress.getVisitor(i).getFirstName()) && txtCompany.getText().trim().equals(DigitalFortress.getVisitor(i).getCompany())) {
+                //make table visible
+                lblVisitorRecords.setVisible(true);
+                jScrollPane2.setVisible(true);
+                tblVisitorRecords.setVisible(true);
 
-                    // testing match:  System.out.print(DigitalFortress.getVisitor(i).getVisitorInfo());
-                    //load table with matching visitor record
-                    //DefaultTableModel model = (DefaultTableModel) tblVisitorRecords.getModel();
-                    model.addRow(new Object[]{DigitalFortress.getVisitor(i).getLastName(), DigitalFortress.getVisitor(i).getFirstName(), DigitalFortress.getVisitor(i).getCompany(), DigitalFortress.getVisitor(i).getVendor(), DigitalFortress.getVisitor(i).getDateIn(), DigitalFortress.getVisitor(i).getDateOut()});
-                }
-            /*for(int j=0; j<= 3-1; j++){
-                System.out.println(tblVisitorRecords.getValueAt(i,j));
-                if (txtLastName.getText().equals(tblVisitorRecords.getValueAt(i, 0)) && txtFirstName.getText().equals(tblVisitorRecords.getValueAt(i, 1)) && txtCompany.getText().equals(tblVisitorRecords.getValueAt(i,2))){
-                    System.out.print(tblVisitorRecords.getValueAt(i, j) + ", ");
-                }
-            }*/
+                // testing match:  System.out.print(DigitalFortress.getVisitor(i).getVisitorInfo());
+                //load table with matching visitor record
+                model.addRow(new Object[]{DigitalFortress.getVisitor(i).getLastName(), DigitalFortress.getVisitor(i).getFirstName(), DigitalFortress.getVisitor(i).getCompany(), DigitalFortress.getVisitor(i).getVendor(), DigitalFortress.getVisitor(i).getDateIn(), DigitalFortress.getVisitor(i).getDateOut()});
+            }
             System.out.print("\n");
         }
         clearTextFields();
-        
-        /*for(int i=0; i <= tblVisitorRecords.getRowCount()-1; i++){
-            if (txtLastName.getText().trim().equals(tblVisitorRecords.getValueAt(i, 0)) && txtFirstName.getText().trim().equals(tblVisitorRecords.getValueAt(i, 1)) && txtCompany.getText().trim().equals(tblVisitorRecords.getValueAt(i,2))){
-                    System.out.print(tblVisitorRecords.getValueAt(i, 0) + ", " + tblVisitorRecords.getValueAt(i,1) + ", " + tblVisitorRecords.getValueAt(i,2));
-                }
-            System.out.print("\n");
-        }
-        clearTextFields();*/
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void txtLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLastNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLastNameActionPerformed
+
+    private void btnViewAllVisitorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAllVisitorsActionPerformed
+        //initialize table and clear before populating with all records
+        DefaultTableModel model = (DefaultTableModel) tblVisitorRecords.getModel();
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+        
+        //make table visible
+        lblVisitorRecords.setVisible(true);
+        jScrollPane2.setVisible(true);
+        tblVisitorRecords.setVisible(true);
+
+        for (int i = 0; i <= DigitalFortress.getVisitorsSize() - 1; i++) {
+            model.addRow(new Object[]{DigitalFortress.getVisitor(i).getLastName(), DigitalFortress.getVisitor(i).getFirstName(), DigitalFortress.getVisitor(i).getCompany(), DigitalFortress.getVisitor(i).getVendor(), DigitalFortress.getVisitor(i).getDateIn(), DigitalFortress.getVisitor(i).getDateOut()});
+        }
+    }//GEN-LAST:event_btnViewAllVisitorsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,6 +361,7 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCloseWindow;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnViewAllVisitors;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -340,6 +370,7 @@ public class VisitorRecords_GUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblCompany;
     private javax.swing.JLabel lblFirstName;
     private javax.swing.JLabel lblLastName;
+    private javax.swing.JLabel lblViewAllVisitors;
     private javax.swing.JLabel lblVisitorRecords;
     private javax.swing.JTable tblVisitorRecords;
     private javax.swing.JTextField txtCompany;
